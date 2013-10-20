@@ -12,8 +12,8 @@
 (def chunker (make-treebank-chunker "models/en-chunker.bin"))
 
 (def wordnet (make-dictionary "models/dict/"))
-(def s (slurp "blah.txt"))
-(def sentences (get-sentences s))
+
+
 
 (defn lemma
 	[word]
@@ -38,6 +38,8 @@
 (defn -main
 	"Main driver function."
   [& args]
+      (def s (slurp (apply str (first args))))
+      (def sentences (get-sentences s))
   		(def tokens (nouns-and-verbs (pos-tag (tokenize s))))
    		(def counts (count tokens))
   		(loop [i 0]
