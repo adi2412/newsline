@@ -7,6 +7,10 @@ This is an application in clojure which would accept a news article as input and
 
 ## Usage
 
+		If running through lein use,
+
+		lein run <filename.txt>
+
     $ java -jar newsline-0.1.0-standalone.jar [args]
 
 ## License
