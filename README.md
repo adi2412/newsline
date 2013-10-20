@@ -1,36 +1,15 @@
 # newsline
 
-FIXME: description
+This is an application in clojure which would accept a news article as input and categorise it into any of the given categories.
 
 ## Installation
 
-Download from http://example.com/FIXME.
 
 ## Usage
 
-FIXME: explanation
-
     $ java -jar newsline-0.1.0-standalone.jar [args]
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
 ## License
-
-Copyright © 2013 FIXME
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
