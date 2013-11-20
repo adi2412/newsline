@@ -20,14 +20,14 @@
 	(:lemma word))
 
 (defn word-net
-	"Returns a word in the IWord format of JWI"
-	[word tag]
-	(first (wordnet word tag)))	
+	"Returns a word in the IWord format of JWI. Providing the pos tag is optional"
+	[word]
+	(first (wordnet word)))	
 
 (defn relatedSynsets
 	"Returns the related synsets of the given word"
 	[word]
-	(if (not (= word nil)) (flatten (vals (related-synsets word :similar-to)))))
+	(if (not (= word nil)) (flatten(vals(related-synsets word :hyponym)))))
 
 (defn postagger
 	"Returns whether the word is a noun or a verb"
@@ -48,10 +48,11 @@
   				(def postag (postagger ((first tokens) 1)))
   				(println (first tokens))
   				(println postag)
-  				(def wordnetWord (word-net word postag))
+  				(def wordnetWord (word-net word))
   				(if (not (= wordnetWord nil)) (println (:lemma wordnetWord)))
   				(def synsetWords (relatedSynsets wordnetWord))
   				(if (not (= synsetWords nil)) (println (map :lemma synsetWords)))
+          (println "<------------------------------------------------>")
   				(def tokens (rest tokens))
   				(recur (inc i)))))
 
