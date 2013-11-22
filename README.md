@@ -36,6 +36,7 @@ We can also use statistical method to bolster the value of recurring words so th
 
 Make a list of all the synset words gathered and find the synset for each.
 Need to figure out how to add activation functions for this.
+Make a Global Key List with all words and their synsetIDs along with their activation values. All words in the article get a default activation value of 1(or some other number).
 
 ## License
 
