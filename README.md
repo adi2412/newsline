@@ -34,9 +34,10 @@ This is an application in clojure which would accept a news article as input and
 
 ## Next Steps
 
-* Make a list of all the synset words gathered and find the synset for each.
+* <strikethrough> Make a list of all the synset words gathered and find the synset for each.<strikethrough>
 * Need to figure out how to add activation functions for this.
 * Make a Global Key List with all words and their synsetIDs along with their activation values. All words in the article get a default activation value of 1(or some other number).
+* Hide the crappy warnings from the stemmer module.
 
 ## License
 
