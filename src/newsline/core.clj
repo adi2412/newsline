@@ -14,6 +14,7 @@
 (def chunker (make-treebank-chunker "models/en-chunker.bin"))
 
 (def wordnet (make-dictionary "models/dict/"))
+(def wordBasket (list))
 
 
 (defn lemma
@@ -67,15 +68,27 @@
           (println (first word))
   				(println postag)
   				(def wordnetWord (word-net (first word)))
-          (if (not (empty? wordnetWord)) (def wordnetWordID (.getSynsetID (:id (first wordnetWord)))))
-          (def wordBasket (hash-map :word (:lemma (first wordnetWord)) :id wordnetWordID))
-          (println (wordBasket :id))
-          (if (not (empty? wordnetWord)) (println (:lemma (first wordnetWord))))
+          (if (not (empty? wordnetWord)) 
+            (do 
+              (def wordnetWordID (.getSynsetID (:id (first wordnetWord))))
+              (def wordHash (hash-map :word (:lemma (first wordnetWord)) :id wordnetWordID :value 1))
+              (def wordBasket (cons wordHash wordBasket))
+              (println (:lemma (first wordnetWord)))
   				;(if (not (= wordnetWord nil)) (println (:lemma wordnetWord)))
-          (if (not (empty? wordnetWord)) (synsets wordnetWord))
+              (synsets wordnetWord)
+              ))
   				;(if (not (= synsetWords nil)) (println (map :lemma synsetWords)))
           (println counts)
           (println "<------------------------------------------------>")
   				(def tokens (rest tokens))
-  				(recur (inc i)))))
+  				(recur (inc i))))
+      (def basketCopy wordBasket)
+      (def basketCount (count wordBasket))
+      (loop [i 0]
+        (when (< i basketCount)
+          (println ((first basketCopy) :value))
+          (def basketCopy (rest basketCopy))
+          (recur (inc i))
+          ))
+)
 
